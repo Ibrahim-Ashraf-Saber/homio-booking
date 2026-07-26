@@ -15,7 +15,7 @@ export const authOptions = {
   adapter: PrismaAdapter(prisma),
   session: { strategy: "jwt" as const },
   pages: {
-    singIn: "/login",
+    signIn: "/login",
   },
   providers: [
     GoogleProvider({
