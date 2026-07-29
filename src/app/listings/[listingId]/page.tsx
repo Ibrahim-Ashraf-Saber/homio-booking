@@ -1,3 +1,4 @@
+import { ListingImageGallery } from "@/components/listing-image-gallery";
 import { getCurrentUser } from "@/lib/auth";
 import { fetchDemoProperties } from "@/lib/demo-properties";
 import { prisma } from "@/lib/prisma";
@@ -35,9 +36,10 @@ export default async function ListingPage({
     include: { user: true },
   });
 
-  const shouldSyncDemoRows =
-    Boolean(demoListingSeed) &&
-    (!dbListing || dbListing.category === "Demo Stay");
+  // const shouldSyncDemoRows =
+  //   Boolean(demoListingSeed) &&
+  //   (!dbListing || dbListing.category === "Demo Stay");
+  const shouldSyncDemoRows = Boolean(demoListingSeed) && !dbListing;
   if (shouldSyncDemoRows) {
     await syncDemoListingById(listingId);
     dbListing = await prisma.listing.findUnique({
@@ -126,13 +128,23 @@ export default async function ListingPage({
   const initialChildren = query.children;
   const initialInfants = query.infants;
 
+  console.log(listing.imageGallery);
+  console.log(dbListing);
+
   return (
     <main className="mx-auto min-h-screen max-w-7xl px-4 pb-28 pt-5 md:px-8 md:pb-10 md:pt-8">
       <article className="space-y-6 md:space-y-8">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(320px,1fr)] lg:items-start">
           <div className="order-2 space-y-6 md:space-y-7 lg:order-1">
             <section>
-              <p>ListingImageGallery</p>
+              <ListingImageGallery
+                images={
+                  listing.imageGallery.length > 0
+                    ? listing.imageGallery
+                    : [listing.imageSrc]
+                }
+                altBase={listing.title}
+              />
               <p>ListingHeaderInfo</p>
             </section>
 
