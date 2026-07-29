@@ -126,5 +126,28 @@ export default async function ListingPage({
   const initialChildren = query.children;
   const initialInfants = query.infants;
 
-  return <div>ListingPage</div>;
+  return (
+    <main className="mx-auto min-h-screen max-w-7xl px-4 pb-28 pt-5 md:px-8 md:pb-10 md:pt-8">
+      <article className="space-y-6 md:space-y-8">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(320px,1fr)] lg:items-start">
+          <div className="order-2 space-y-6 md:space-y-7 lg:order-1">
+            <section>
+              <p>ListingImageGallery</p>
+              <p>ListingHeaderInfo</p>
+            </section>
+
+            <p>ListingAbout</p>
+
+            <p>ListingBookedRanges</p>
+
+            <p>ListingMap</p>
+          </div>
+
+          <div className="order-1 lg:order-2">
+            <p>ListingBookingSidebar</p>
+          </div>
+        </div>
+      </article>
+    </main>
+  );
 }
