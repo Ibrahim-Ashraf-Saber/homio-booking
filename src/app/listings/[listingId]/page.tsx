@@ -1,5 +1,6 @@
 import { ListingImageGallery } from "@/components/listing-image-gallery";
 import { ListingAbout } from "@/components/listing/listing-about";
+import { ListingBookedRanges } from "@/components/listing/listing-booked-ranges";
 import { ListingHeaderInfo } from "@/components/listing/listing-header-info";
 import { getCurrentUser } from "@/lib/auth";
 import { fetchDemoProperties } from "@/lib/demo-properties";
@@ -130,9 +131,6 @@ export default async function ListingPage({
   const initialChildren = query.children;
   const initialInfants = query.infants;
 
-  console.log(listing.imageGallery);
-  console.log(dbListing);
-
   return (
     <main className="mx-auto min-h-screen max-w-7xl px-4 pb-28 pt-5 md:px-8 md:pb-10 md:pt-8">
       <article className="space-y-6 md:space-y-8">
@@ -174,7 +172,7 @@ export default async function ListingPage({
               hostRating={hostRating}
             />
 
-            <p>ListingBookedRanges</p>
+            <ListingBookedRanges bookedRanges={bookedRanges} />
 
             <p>ListingMap</p>
           </div>
