@@ -1,4 +1,5 @@
 import { ListingImageGallery } from "@/components/listing-image-gallery";
+import { ListingAbout } from "@/components/listing/listing-about";
 import { ListingHeaderInfo } from "@/components/listing/listing-header-info";
 import { getCurrentUser } from "@/lib/auth";
 import { fetchDemoProperties } from "@/lib/demo-properties";
@@ -164,7 +165,14 @@ export default async function ListingPage({
               />
             </section>
 
-            <p>ListingAbout</p>
+            <ListingAbout
+              description={listing.description}
+              guestCount={listing.guestCount}
+              roomCount={listing.roomCount}
+              bathroomCount={listing.bathroomCount}
+              hostName={listing.hostName}
+              hostRating={hostRating}
+            />
 
             <p>ListingBookedRanges</p>
 
