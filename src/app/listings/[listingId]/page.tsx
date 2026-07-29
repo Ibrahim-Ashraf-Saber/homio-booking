@@ -1,6 +1,7 @@
 import { ListingImageGallery } from "@/components/listing-image-gallery";
 import { ListingAbout } from "@/components/listing/listing-about";
 import { ListingBookedRanges } from "@/components/listing/listing-booked-ranges";
+import { ListingBookingSidebar } from "@/components/listing/listing-booking-sidebar";
 import { ListingHeaderInfo } from "@/components/listing/listing-header-info";
 import { ListingMap } from "@/components/listing/listing-map";
 import { getCurrentUser } from "@/lib/auth";
@@ -179,7 +180,23 @@ export default async function ListingPage({
           </div>
 
           <div className="order-1 lg:order-2">
-            <p>ListingBookingSidebar</p>
+            <ListingBookingSidebar
+              listingId={listing.id}
+              pricePerNight={listing.pricePerNight}
+              hostName={listing.hostName}
+              reservationCount={reservationCount}
+              userActiveReservation={userActiveReservation}
+              maxGuests={listing.guestCount}
+              isLoggedIn={Boolean(user)}
+              bookingStatus={bookingStatus}
+              bookingMessage={bookingMessage}
+              unavailableRanges={bookedRanges}
+              initialCheckIn={initialCheckIn}
+              initialCheckOut={initialCheckOut}
+              initialAdults={initialAdults}
+              initialChildren={initialChildren}
+              initialInfants={initialInfants}
+            />
           </div>
         </div>
       </article>
