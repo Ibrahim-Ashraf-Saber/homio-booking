@@ -1,4 +1,5 @@
 import { ListingImageGallery } from "@/components/listing-image-gallery";
+import { ListingHeaderInfo } from "@/components/listing/listing-header-info";
 import { getCurrentUser } from "@/lib/auth";
 import { fetchDemoProperties } from "@/lib/demo-properties";
 import { prisma } from "@/lib/prisma";
@@ -145,7 +146,22 @@ export default async function ListingPage({
                 }
                 altBase={listing.title}
               />
-              <p>ListingHeaderInfo</p>
+
+              <ListingHeaderInfo
+                category={listing.category}
+                title={listing.title}
+                locationValue={listing.locationValue}
+                hostRating={hostRating}
+                hostName={listing.hostName}
+                pricePerNight={listing.pricePerNight}
+                listingStatusLabel={
+                  isDemoListing
+                    ? "Featured demo listing"
+                    : reservationCount > 0
+                      ? `${reservationCount} confirmed booking${reservationCount > 1 ? "s" : ""}`
+                      : "Newly listed"
+                }
+              />
             </section>
 
             <p>ListingAbout</p>
