@@ -1,3 +1,4 @@
+import { ReservationCard } from "@/components/bookings/reservation-card";
 import { EmptyState } from "@/components/ui/empty-state";
 import { PageIntro } from "@/components/ui/page-intro";
 import { StatCard } from "@/components/ui/stat-card";
@@ -70,8 +71,11 @@ export default async function BookingsPage({
           />
         ) : (
           reservations.map((reservation) => (
-            // TODO: ReservationCard Component
-            <p>ReservationCard</p>
+            <ReservationCard
+              key={reservation.id}
+              reservation={reservation}
+              today={today}
+            />
           ))
         )}
       </section>
