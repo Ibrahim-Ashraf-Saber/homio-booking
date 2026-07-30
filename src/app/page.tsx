@@ -149,7 +149,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
   const listingQuery = listingQueryParams.toString();
   const buildListingHref = (listingId: string) =>
-    `/listings/${listingId}${listingQuery ? `${listingQuery}` : ""}`;
+    `/listings/${listingId}${listingQuery ? `?${listingQuery}` : ""}`;
 
   const hasLocationSearch = Boolean(params.location?.trim());
   const hasAnyFilter = Boolean(
