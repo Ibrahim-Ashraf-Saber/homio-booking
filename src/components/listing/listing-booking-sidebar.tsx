@@ -55,7 +55,7 @@ export function ListingBookingSidebar({
 
           <p className="hidden text-xs text-ink-500 md:block">
             {reservationCount > 0
-              ? `${reservationCount} booking${reservationCount > 1 ? "s" : ""} on StayScape`
+              ? `${reservationCount} booking${reservationCount > 1 ? "s" : ""} on Homio`
               : "No bookings yet"}
           </p>
         </div>
