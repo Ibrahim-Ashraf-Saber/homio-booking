@@ -1,6 +1,8 @@
+import { PageIntro } from "@/components/ui/page-intro";
 import { requireUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { uiShell } from "@/lib/ui-classes";
+import { CalendarCheck2 } from "lucide-react";
 
 type BookingsPageProps = {
   searchParams: Promise<{
@@ -32,8 +34,12 @@ export default async function BookingsPage({
 
   return (
     <main className={uiShell.pageContainer}>
-      {/* TODO: PageIntro Component */}
-      <p>PageIntro </p>
+      <PageIntro
+        badge="Your bookings"
+        icon={CalendarCheck2}
+        title="Your reservations"
+        description="Track upcoming stays, review completed trips, and manage active bookings."
+      />
 
       {query.message ? (
         <p className="mt-3 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm font-medium text-amber-700">
