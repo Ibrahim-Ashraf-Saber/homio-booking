@@ -1,9 +1,10 @@
+import { EmptyState } from "@/components/ui/empty-state";
 import { PageIntro } from "@/components/ui/page-intro";
 import { StatCard } from "@/components/ui/stat-card";
 import { requireUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { uiShell } from "@/lib/ui-classes";
-import { CalendarCheck2, Wallet } from "lucide-react";
+import { CalendarCheck2, CalendarX2, Wallet } from "lucide-react";
 
 type BookingsPageProps = {
   searchParams: Promise<{
@@ -60,8 +61,13 @@ export default async function BookingsPage({
 
       <section className="mt-6 space-y-3 md:space-y-4">
         {reservations.length === 0 ? (
-          // TODO: EmptyState Component
-          <p>EmptyState</p>
+          <EmptyState
+            icon={CalendarX2}
+            title="No reservations yet"
+            description="Reserve your first stay and it will appear here."
+            actionHref="/"
+            actionLabel="Browse homes"
+          />
         ) : (
           reservations.map((reservation) => (
             // TODO: ReservationCard Component
