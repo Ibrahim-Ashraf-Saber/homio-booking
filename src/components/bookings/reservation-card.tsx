@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { format } from "date-fns";
 import { Clock3, MapPin } from "lucide-react";
+import { cancelReservation } from "@/app/actions";
 
 type ReservationCardProps = {
   reservation: {
@@ -60,10 +61,7 @@ export function ReservationCard({ reservation, today }: ReservationCardProps) {
           </Link>
 
           {isActive ? (
-            <form
-              // TODO: cancelReservation Server Acrion --> action={cancelReservation}
-              className="w-full sm:w-auto"
-            >
+            <form action={cancelReservation} className="w-full sm:w-auto">
               <input
                 type="hidden"
                 name="reservationId"
