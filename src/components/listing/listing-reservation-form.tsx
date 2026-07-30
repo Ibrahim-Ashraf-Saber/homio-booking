@@ -12,6 +12,7 @@ import { useMemo, useState } from "react";
 import { DateRange } from "react-day-picker";
 import { useFormStatus } from "react-dom";
 import { DateRangePicker } from "../date-range-picker";
+import { createReservation } from "@/app/actions";
 
 type ListingReservationFormProps = {
   listingId: string;
@@ -166,7 +167,7 @@ export default function ListingReservationForm({
   return (
     <form
       id={formAnchorId}
-      // TODO: Server Action  action={}
+      action={createReservation}
       className="space-y-4 rounded-2xl border border-ink-200 bg-surface p-5"
     >
       {bookingStatus === "success" ? (
