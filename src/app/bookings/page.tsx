@@ -1,8 +1,9 @@
 import { PageIntro } from "@/components/ui/page-intro";
+import { StatCard } from "@/components/ui/stat-card";
 import { requireUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { uiShell } from "@/lib/ui-classes";
-import { CalendarCheck2 } from "lucide-react";
+import { CalendarCheck2, Wallet } from "lucide-react";
 
 type BookingsPageProps = {
   searchParams: Promise<{
@@ -48,8 +49,13 @@ export default async function BookingsPage({
       ) : null}
 
       <section className="mt-5 grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {/* TODO: StatCard Component */}
-        <p>StatCard</p>
+        <StatCard label="Total bookings" value={reservations.length} />
+        <StatCard label="Active bookings" value={activeBookings.length} />
+        <StatCard
+          label="Total spend"
+          value={`$${totalCharged}`}
+          icon={Wallet}
+        />
       </section>
 
       <section className="mt-6 space-y-3 md:space-y-4">
