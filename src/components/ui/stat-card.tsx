@@ -10,7 +10,7 @@ type StatCardProps = {
 export function StatCard({ label, value, icon: Icon }: StatCardProps) {
   return (
     <article className={uiShell.panelCard}>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-2">
         <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-500">
           {label}
         </p>
