@@ -1,3 +1,4 @@
+import { HostListingItem } from "@/components/host/host-listing-item";
 import { HostSection } from "@/components/host/host-section";
 import { EmptyState } from "@/components/ui/empty-state";
 import { PageIntro } from "@/components/ui/page-intro";
@@ -84,8 +85,11 @@ export default async function HostDashboardPage() {
               />
             ) : (
               listings.map((listing, index) => (
-                // TODO: HostListingItem Component
-                <p>HostListingItem</p>
+                <HostListingItem
+                  key={listing.id}
+                  listing={listing}
+                  index={index}
+                />
               ))
             )}
           </div>
