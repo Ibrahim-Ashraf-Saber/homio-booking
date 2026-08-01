@@ -187,3 +187,20 @@ export async function cancelReservation(formData: FormData) {
 
   redirect("/bookings?message=Reservation cancelled successfully.");
 }
+
+export async function deleteListing(formData: FormData) {
+  const user = await requireUser();
+
+  const listingId = String(formData.get("listingId") ?? "");
+  if (!listingId) throw new Error("Listing id is missing.");
+
+  await prisma.listing.deleteMany({
+    where: {
+      id: listingId,
+      userId: user.id,
+    },
+  });
+
+  revalidatePath("/");
+  revalidatePath("/host");
+}

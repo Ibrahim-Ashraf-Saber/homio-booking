@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BedDouble, Bath, Users, MapPin, Pencil, Trash2 } from "lucide-react";
 import { SafeImage } from "@/components/safe-image";
+import { deleteListing } from "@/app/actions";
 
 type HostListingItemProps = {
   listing: {
@@ -81,9 +82,7 @@ export function HostListingItem({ listing, index }: HostListingItemProps) {
               Edit
             </Link>
 
-            <form
-            // TODO: deleteListing Server Action action={deleteListing}
-            >
+            <form action={deleteListing}>
               <input type="hidden" name="listingId" value={listing.id} />
               <button
                 type="submit"
