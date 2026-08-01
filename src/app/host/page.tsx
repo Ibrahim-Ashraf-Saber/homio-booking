@@ -1,9 +1,12 @@
+import { HostSection } from "@/components/host/host-section";
+import { EmptyState } from "@/components/ui/empty-state";
 import { PageIntro } from "@/components/ui/page-intro";
 import { StatCard } from "@/components/ui/stat-card";
 import { requireUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { uiShell } from "@/lib/ui-classes";
 import { BadgeCheck, Building2, DollarSign, Sparkles } from "lucide-react";
+import Link from "next/link";
 
 export default async function HostDashboardPage() {
   const user = await requireUser();
@@ -51,6 +54,43 @@ export default async function HostDashboardPage() {
           icon={BadgeCheck}
         />
       </section>
+
+      <div className="mt-6 grid gap-6 xl:grid-cols-[1.1fr_1fr]">
+        <HostSection
+          title="Create a listing"
+          description="Add a professionally presented listing with photos, pricing, and guest details."
+        >
+          {/* TODO: ListingForm Component */}
+          <p>ListingForm</p>
+        </HostSection>
+
+        <HostSection
+          title="Your listings"
+          description="Update, review, or remove homes from your hosting portfolio."
+          action={
+            <Link
+              href="/"
+              className="rounded-full border border-ink-300 px-3 py-1.5 text-xs font-semibold text-ink-700 transition hover:bg-ink-50"
+            >
+              View guest experience
+            </Link>
+          }
+        >
+          <div className="space-y-3">
+            {listings.length === 0 ? (
+              <EmptyState
+                title="No listings yet"
+                description="Fill in the form to publish your first property."
+              />
+            ) : (
+              listings.map((listing, index) => (
+                // TODO: HostListingItem Component
+                <p>HostListingItem</p>
+              ))
+            )}
+          </div>
+        </HostSection>
+      </div>
     </main>
   );
 }
