@@ -15,6 +15,37 @@ type FieldInputProps = {
   defaultValue?: string | number;
 };
 
+function FieldInput({
+  name,
+  label,
+  placeholder,
+  type = "text",
+  min,
+  defaultValue,
+}: FieldInputProps) {
+  return (
+    <label className="grid gap-1.5">
+      <span className="text-xs font-medium text-ink-600">{label}</span>
+      <input
+        name={name}
+        required
+        type={type}
+        min={min}
+        placeholder={placeholder}
+        defaultValue={defaultValue}
+        className="rounded-xl border border-ink-300 px-3 py-2 text-sm text-ink-900 outline-none transition placeholder:text-ink-400 focus:border-brand-400 focus:ring-2 focus:ring-brand-100"
+      />
+    </label>
+  );
+}
+type FieldTextareaProps = {
+  name: string;
+  label: string;
+  placeholder: string;
+  className?: string;
+  defaultValue?: string;
+};
+
 function FieldTextarea({
   name,
   label,
