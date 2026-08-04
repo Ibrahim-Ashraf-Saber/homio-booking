@@ -2,7 +2,30 @@
 
 import { useFormStatus } from "react-dom";
 
-export default function ListingForm() {
+type ListingFormProps = {
+  action: (formData: FormData) => Promise<void>;
+  submitLabel?: string;
+  submittingLabel?: string;
+  initialValues?: {
+    title: string;
+    category: string;
+    description: string;
+    locationValue: string;
+    pricePerNight: number;
+    guestCount: number;
+    roomCount: number;
+    bathroomCount: number;
+    imageSrc: string;
+    imageGallery: string[];
+  };
+};
+
+export default function ListingForm({
+  action,
+  submitLabel = "Publish listing",
+  submittingLabel = "Publishing...",
+  initialValues,
+}: ListingFormProps) {
   return <div>ListingForm</div>;
 }
 
