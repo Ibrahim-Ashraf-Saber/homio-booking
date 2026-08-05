@@ -204,3 +204,5 @@ export async function deleteListing(formData: FormData) {
   revalidatePath("/");
   revalidatePath("/host");
 }
+
+export async function createListing(formData: FormData) {}

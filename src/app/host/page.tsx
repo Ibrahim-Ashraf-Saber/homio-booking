@@ -1,5 +1,6 @@
 import { HostListingItem } from "@/components/host/host-listing-item";
 import { HostSection } from "@/components/host/host-section";
+import ListingForm from "@/components/listing-form";
 import { EmptyState } from "@/components/ui/empty-state";
 import { PageIntro } from "@/components/ui/page-intro";
 import { StatCard } from "@/components/ui/stat-card";
@@ -8,6 +9,7 @@ import { prisma } from "@/lib/prisma";
 import { uiShell } from "@/lib/ui-classes";
 import { BadgeCheck, Building2, DollarSign, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { createListing } from "../actions";
 
 export default async function HostDashboardPage() {
   const user = await requireUser();
@@ -61,8 +63,7 @@ export default async function HostDashboardPage() {
           title="Create a listing"
           description="Add a professionally presented listing with photos, pricing, and guest details."
         >
-          {/* TODO: ListingForm Component */}
-          <p>ListingForm</p>
+          <ListingForm action={createListing} />
         </HostSection>
 
         <HostSection
